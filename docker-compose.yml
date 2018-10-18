@@ -1,0 +1,23 @@
+---
+version: '3.7'
+
+services:
+
+  vizualizer:
+    image: dockersamples/visualizer
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+    ports:
+    - 8080:8080
+    deploy:
+      mode: global
+      placement:
+        constraints:
+        - node.role==manager
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 30s
