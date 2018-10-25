@@ -1,3 +1,4 @@
+---
 - hosts: managers
   run_once: true
   tasks:
