@@ -1,0 +1,21 @@
+---
+- hosts: managers
+  run_once: true
+  tasks:
+  - name: Install Vizualizer
+    docker_swarm_service:
+      name: vizualizer
+      image: "dockersamples/visualizer"
+      mounts:
+      - source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        type: bind
+      constraints:
+      - "node.role==manager"
+      publish:
+      - published_port: 8080
+        target_port: 8080
+      mode: global
+      restart_policy: any
+      restart_policy_attempts: 5
+      restart_policy_window: 30
