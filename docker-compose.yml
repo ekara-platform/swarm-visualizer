@@ -10,7 +10,7 @@ services:
       source: /var/run/docker.sock
       target: /var/run/docker.sock
     ports:
-    - {{ .app.vizualizer.port }}:8080
+    - {{ .app.visualizer.port }}:8080
     deploy:
       mode: global
       placement:
