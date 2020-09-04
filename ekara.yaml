@@ -1,3 +1,4 @@
 ---
-templates:
-- "docker-compose.yml"
+ekara:
+  templates:
+  - "docker-compose.yml"
